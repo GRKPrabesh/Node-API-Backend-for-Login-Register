@@ -3,7 +3,8 @@ const config = require("./config");
 const db = {};
 db.connect = async () => {
   try {
-    await mongoose.connect(config.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost:27017/blogApp");
+;
     console.log("Database connected successfully");
   } catch (error) {
     console.error("Database connection failed:", error);
